@@ -1,0 +1,44 @@
+<div class="container mt-5" style="max-width: 420px;">
+    <h2 class="mb-4">Sign up</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="username">Username:</label>
+            <input id="username" formControlName="username" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" type="password" formControlName="password" />
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input id="phone" formControlName="phone" />
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <p class="mt-3">
+        Already have an account?
+        <a routerLink="/login">Login</a>
+    </p>
+
+    @if(loading$ | async) {
+        <div class="alert alert-info">
+            Loading...
+        </div>
+    }
+    @if(error$ | async; as error) {
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    }
+
+
+</div>
