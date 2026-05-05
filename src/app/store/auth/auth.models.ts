@@ -4,6 +4,7 @@ export interface AuthState {
     error: string | null;
     isLoggedIn: boolean;
     token: string | null;
+    initialized: boolean;
 }
 
 export interface AppUser {

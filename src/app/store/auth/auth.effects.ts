@@ -58,23 +58,32 @@ export class AuthEffects {
     ),
   );
 
-  //   loadSession$ = createEffect(() =>
-  //     this.actions$.pipe(
-  //       ofType(AuthActions.loadSession),
-  //       map(() => this.tokenStorage.getToken()),
-  //       switchMap((token) => {
-  //         if (!token) return of(AuthActions.loadSessionFailure({ error: 'No token found' }));
+  loadSession$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.loadSession),
+      map(() => this.tokenStorage.getToken()),
+      switchMap((token) => {
+        if (!token)
+          return of(
+            AuthActions.loadSessionFailure({ error: 'No token found' }),
+          );
 
-  //         return this.api.me(token).pipe(
-  //           map((res) => AuthActions.loadSessionSuccess({ user: res.user, token })),
-  //           catchError(() => {
-  //             this.tokenStorage.removeToken();
-  //             return of(AuthActions.loadSessionFailure({ error: 'Failed to load session' }));
-  //           })
-  //         );
-  //       })
-  //     )
-  //   );
+        return this.api.me(token).pipe(
+          map((res) =>
+            AuthActions.loadSessionSuccess({ user: res.user, token }),
+          ),
+          catchError(() => {
+            this.tokenStorage.clearToken();
+            return of(
+              AuthActions.loadSessionFailure({
+                error: 'Failed to load session',
+              }),
+            );
+          }),
+        );
+      }),
+    ),
+  );
 
   loginRedirect$ = createEffect(
     () =>

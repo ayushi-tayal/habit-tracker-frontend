@@ -9,7 +9,8 @@ export const initialState: AuthState = {
     token: null,
     loading: false,
     error: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    initialized: false
 }
 
 export const authReducer = createReducer(
@@ -44,12 +45,14 @@ export const authReducer = createReducer(
         token,
         loading: false,
         isLoggedIn: true,
-        error: null
+        error: null,
+        initialized: true
     })),
     on(AuthActions.loadSessionFailure, (state, { error })=>({
         ...state,
         error,
-        loading: false
+        loading: false,
+          initialized: true
     })),
     on(AuthActions.logout, ()=> ({
         ...initialState
