@@ -68,7 +68,7 @@ export class AuthEffects {
             AuthActions.loadSessionFailure({ error: 'No token found' }),
           );
 
-        return this.api.me(token).pipe(
+        return this.api.me().pipe(
           map((res) =>
             AuthActions.loadSessionSuccess({ user: res.user, token }),
           ),

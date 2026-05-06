@@ -23,10 +23,7 @@ export class AuthApi {
     return this.http.post<any>(`${this.baseUrl}/login`, payload);
   }
 
-  me(token: string) {
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
-    return this.http.get<any>(`${this.baseUrl}/me`, { headers });
+  me() {
+    return this.http.get<any>(`${this.baseUrl}/me`);
   }
 }
