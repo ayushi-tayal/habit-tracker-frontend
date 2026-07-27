@@ -54,6 +54,21 @@ export const authReducer = createReducer(
         loading: false,
           initialized: true
     })),
+    on(AuthActions.resetPassword, (state)=>({
+        ...state,
+        loading: true,
+        error: null
+    })),
+    on(AuthActions.resetPasswordSuccess, (state)=>({
+        ...state,
+        loading: false,
+        error: null
+    })),
+    on(AuthActions.resetPasswordFailure, (state, { error })=>({
+        ...state,
+        loading: false,
+        error
+    })),
     on(AuthActions.logout, ()=> ({
         ...initialState
     }))

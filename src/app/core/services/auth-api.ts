@@ -22,6 +22,9 @@ export class AuthApi {
   login(payload: { email: string; password: string }) {
     return this.http.post<any>(`${this.baseUrl}/login`, payload);
   }
+  resetPassword(payload: { email: string; password: string }) {
+    return this.http.post<any>(`${this.baseUrl}/reset-password`, payload);
+  }
 
   me() {
     return this.http.get<any>(`${this.baseUrl}/me`);

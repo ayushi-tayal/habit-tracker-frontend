@@ -38,3 +38,18 @@ export const loadSessionFailure = createAction(
   '[Auth] Load Session Failure',
   props<{ error: string }>(),
 );
+
+export const resetPassword = createAction(
+  '[Auth] Reset Password',
+  props<{ email: string, password: string }>(),
+);
+
+export const resetPasswordSuccess = createAction(
+  '[Auth] Reset Password Success',
+  props<{ message: string }>(),
+);
+
+export const resetPasswordFailure = createAction(
+  '[Auth] Reset Password Failure',
+  props<{ error: string }>(),
+);

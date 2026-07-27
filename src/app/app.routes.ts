@@ -12,7 +12,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/auth/login/login').then((m) => m.Login),
   },
-
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./features/auth/forgot-password/forgot-password').then((m) => m.ForgotPassword),
+  },
   {
     path: 'register',
     loadComponent: () =>
@@ -25,12 +29,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/dashboard/dashboard').then((m) => m.Dashboard),
   },
-
   {
-    path: 'habits',
+    path: 'profile',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./features/habits/habits').then((m) => m.Habits),
+      import('./features/profile/edit-profile/edit-profile').then((m) => m.EditProfile),
   },
 
   {

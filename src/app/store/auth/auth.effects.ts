@@ -37,6 +37,28 @@ export class AuthEffects {
     ),
   );
 
+  resetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.resetPassword),
+      switchMap(({ email, password }) =>
+        this.api.resetPassword({ email, password }).pipe(
+          tap((res: any) => this.tokenStorage.setToken(res.token)),
+          map((res: any) =>
+            AuthActions.resetPasswordSuccess({ message: res.message }),
+          ),
+          catchError((err) =>
+            of(
+              AuthActions.resetPasswordFailure({
+                error: err?.error?.message ?? 'Reset password failed',
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.register),
@@ -97,6 +119,14 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.registerSuccess),
+        tap(() => this.router.navigate(['/login'])),
+      ),
+    { dispatch: false },
+  );
+  resetPasswordRedirect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.resetPasswordSuccess),
         tap(() => this.router.navigate(['/login'])),
       ),
     { dispatch: false },

@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import * as AuthActions from '../../../store/auth/auth.actions';
 import { selectError, selectLoading } from '../../../store/auth/auth.selectors';
 
