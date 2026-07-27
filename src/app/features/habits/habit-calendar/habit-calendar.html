@@ -1,0 +1,11 @@
+<div class="card p-3">
+  <h5>Streak Calendar</h5>
+
+  <div class="d-flex flex-wrap mt-3">
+    @for (day of [].constructor(30);  track $index){
+      <div
+        style="width: 30px; height: 30px; margin: 2px; background: #e0e0e0;"
+      ></div>
+    }
+  </div>
+</div>

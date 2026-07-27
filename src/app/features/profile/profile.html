@@ -1,0 +1,29 @@
+<div class="card p-4">
+    <h5 class="mb-4">Profile</h5>
+    @if(loading$ | async){
+    <p>Loading profile...</p>
+    }
+    @let error = error$ | async;
+    @if(error$ | async) {
+    <div class="alert alert-danger">{{error}}</div>
+    }
+    @let profile = profile$ | async;
+    @if(profile) {
+    <div class="text-center mb-4">
+        <img src="https://i.pravatar.cc/80" class="rounded-circle" />
+        <div class="mb-3">
+            <div><strong>Name: </strong>{{profile.username}}</div>
+        </div>
+        <div class="mb-3">
+            <div><strong>Email: </strong>{{profile.email}}</div>
+        </div>
+        <div class="mb-3">
+            <div><strong>Phone: </strong>{{profile.phone}}</div>
+        </div>
+
+    </div>
+    }
+    <button class="btn btn-outline-primary btn-sm" routerLink="/profile">
+        Edit Profile
+    </button>
+</div>
