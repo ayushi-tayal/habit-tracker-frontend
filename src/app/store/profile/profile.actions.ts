@@ -12,7 +12,9 @@ export const loadProfileFailure = createAction(
   '[Profile] Load Failure',
   props<{ error: string }>(),
 );
-export const updateProfile = createAction('[Profile] Update');
+export const updateProfile = createAction('[Profile] Update',
+   props<{userid:string; profile: Profile }>()
+);
 
 export const updateProfileSuccess = createAction(
   '[Profile] Update Success',

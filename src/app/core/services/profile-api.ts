@@ -12,7 +12,8 @@ export class ProfileApi {
     return this.http.get<any>(`${this.baseUrl}/me`)
   } 
   updateProfile(data: any) {
-    return this.http.put<any>(`${this.baseUrl}/update`, data)
+    console.log('.....: ', data)
+    return this.http.patch<any>(`${this.baseUrl}/update`, data)
   } 
 
 }

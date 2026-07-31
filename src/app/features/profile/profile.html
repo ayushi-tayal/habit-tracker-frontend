@@ -22,8 +22,8 @@
         </div>
 
     </div>
-    }
-    <button class="btn btn-outline-primary btn-sm" routerLink="/profile">
+    <button class="btn btn-outline-primary btn-sm" [routerLink]="['/profile']" [queryParams]="{ user_id: profile.id }">
         Edit Profile
     </button>
+    }
 </div>

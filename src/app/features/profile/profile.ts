@@ -25,6 +25,6 @@ export class Profile {
 
   ngOnInit(){
     this.store.dispatch(ProfileActions.loadProfile());
-      console.log('Profile component initialized', this.profile$, this.loading$, this.error$  );
   }
+
 }

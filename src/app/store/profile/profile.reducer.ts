@@ -31,5 +31,11 @@ export const profileReducer = createReducer(
         ...state,
         profile,
         loading: false
+    })),
+    on(ProfileActions.updateProfile, (state, { userid, profile })=>({
+        ...state,
+        profile,
+        userid,
+        loading: false
     }))
 )

@@ -13,30 +13,39 @@
             <label for="phone">Phone:</label>
             <input id="phone" formControlName="phone" />
         </div>
-        <div>
-            <label for="profession">Profession:</label>
-            <input id="profession" formControlName="profession" />
+        <div formGroupName="personal_info">
+            <div>
+                <label for="profession">Profession:</label>
+                <input id="profession" formControlName="profession" />
+            </div>
+            <div>
+                <label for="maritalStatus">Marital Status:</label>
+                <input id="maritalStatus" formControlName="maritalStatus" />
+            </div>
+            <div formGroupName="address">
+                <div>
+                    <label for="street">Street:</label>
+                    <input id="street" formControlName="street" />
+                </div>
+                <div>
+                    <label for="city">City:</label>
+                    <input id="city" formControlName="city" />
+                </div>
+                <div>
+                    <label for="state">State:</label>
+                    <input id="state" formControlName="state" />
+                </div>
+                <div>
+                    <label for="pincode">Pincode:</label>
+                    <input id="pincode" formControlName="pincode" />
+                </div>
+                <div>
+                    <label for="country">Country:</label>
+                    <input id="country" formControlName="country" />
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="maritalStatus">Marital Status:</label>
-            <input id="maritalStatus" formControlName="maritalStatus" />
-        </div>
-        <div>
-            <label for="address">Address:</label>
-            <input id="address" formControlName="address" />
-        </div>
-        <div>
-            <label for="city">City:</label>
-            <input id="city" formControlName="city" />
-        </div>
-        <div>
-            <label for="state">State:</label>
-            <input id="state" formControlName="state" />
-        </div>
-        <div>
-            <label for="country">Country:</label>
-            <input id="country" formControlName="country" />
-        </div>
+
         <button type="submit">Submit</button>
     </form>
 
