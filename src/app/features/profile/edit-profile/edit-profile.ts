@@ -27,7 +27,7 @@ export class EditProfile {
       phone: [{value:'', disabled:true}],
       personal_info: this.fb.group({
         profession: [''],
-        maritalStatus: [''],
+        marital_status: [''],
         address: this.fb.group({
           street: ['', Validators.required],
           city: ['', Validators.required],
@@ -42,11 +42,9 @@ export class EditProfile {
   }
  
   ngOnInit(){
-    // if()
     this.store.dispatch(ProfileActions.loadProfile());
       this.profile$.subscribe(profile => {
-        if(!profile) {this.store.dispatch(ProfileActions.loadProfile());}
-        console.log('Profile data received in EditProfile component:', profile);
+        if(!profile) this.store.dispatch(ProfileActions.loadProfile());
         this.editProfileForm.patchValue({...profile})
       });
   }
@@ -55,7 +53,6 @@ export class EditProfile {
     console.log(this.editProfileForm.value);
     if(this.editProfileForm.valid){
       this.store.dispatch(ProfileActions.updateProfile({userid: this.userId, profile:this.editProfileForm.getRawValue()}))
-
     }
   }
 }

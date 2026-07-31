@@ -20,9 +20,8 @@
         <div class="mb-3">
             <div><strong>Phone: </strong>{{profile.phone}}</div>
         </div>
-
     </div>
-    <button class="btn btn-outline-primary btn-sm" [routerLink]="['/profile']" [queryParams]="{ user_id: profile.id }">
+    <button class="btn btn-outline-primary btn-sm" [routerLink]="['/profile']" [queryParams]="{ user_id: profile?._id }">
         Edit Profile
     </button>
     }

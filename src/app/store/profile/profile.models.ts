@@ -5,12 +5,9 @@ export interface ProfileState  {
 }
 
 export interface Profile {
-        id: string;
+        _id: string;
         username: string;
         email?: string;
         phone?: string;
-        address?: string;
-        city?: string;
-        state?: string;
-        occupation?: string;
+        personal_info?: Object;
     }
