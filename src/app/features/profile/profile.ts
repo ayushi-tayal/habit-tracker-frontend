@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { selectProfile, selectProfileError, selectProfileLoading } from '../../store/profile/profile.selectors';
 import { Store } from '@ngrx/store';
 import * as ProfileActions from '../../store/profile/profile.actions';
 import { CommonModule } from '@angular/common';
-import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({

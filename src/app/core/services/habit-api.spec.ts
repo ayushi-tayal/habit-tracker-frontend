@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProfileApicls } from './profile-apicls';
+import { HabitApi } from './habit-api';
 
-describe('ProfileApicls', () => {
-  let service: ProfileApicls;
+describe('HabitApi', () => {
+  let service: HabitApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProfileApicls);
+    service = TestBed.inject(HabitApi);
   });
 
   it('should be created', () => {

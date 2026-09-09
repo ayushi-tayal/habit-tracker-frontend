@@ -1,0 +1,94 @@
+<main class="choose-habits-page">
+	<div class="choose-habits-shell">
+		<button type="button" class="back-button" (click)="goBack()">
+			<span aria-hidden="true">&larr;</span>
+			Back to dashboard
+		</button>
+
+		<header class="page-heading">
+			<p class="eyebrow">Build your routine</p>
+			<h1>Choose your habits</h1>
+			<p class="intro">Pick the habits you want to make part of your day.</p>
+		</header>
+
+		<section class="habit-panel" aria-labelledby="choose-category-heading">
+			<div class="section-heading">
+				<div>
+					<p class="section-kicker">01</p>
+					<h2 id="choose-category-heading">Choose a category</h2>
+				</div>
+				<span class="step-label">Activities will appear below</span>
+			</div>
+
+			<div class="field-group category-field">
+				<label for="category">Category</label>
+				<select
+					id="category"
+					name="category"
+					class="form-select"
+					[ngModel]="selectedCategoryId()"
+					(ngModelChange)="selectedCategoryId.set($event); onCategoryChange()"
+				>
+					<option value="">Select a category</option>
+					@for (category of categories(); track category._id) {
+						<option [value]="category._id">{{ category.categoryName || category.name }}</option>
+					}
+				</select>
+			</div>
+		</section>
+
+		<section class="habit-panel selected-panel" aria-labelledby="activities-heading">
+			<div class="section-heading">
+				<div>
+					<p class="section-kicker">02</p>
+					<h2 id="activities-heading">Choose your activities</h2>
+				</div>
+				@if (selectedCategoryId()) {
+					<span class="habit-count">{{ selectedHabits.length }} selected</span>
+				}
+			</div>
+
+			@if (categoryHabits().length > 0) {
+				<div class="selected-list">
+					@for (habit of categoryHabits(); track habit._id) {
+						<label class="habit-row">
+							<input
+								type="checkbox"
+								[checked]="selectedHabits.some(selected=>selected._id === habit._id)"
+								(change)="toggleHabit(habit, $any($event.target).checked)"
+							/>
+							<span class="custom-check" aria-hidden="true"></span>
+							<span class="habit-details">
+								<strong>{{ habit.name }}</strong>
+								@if (habit.description) {
+									<small>{{ habit.description }}</small>
+								}
+							</span>
+							<span class="select-label">Select</span>
+						</label>
+					}
+				</div>
+			} @else if (selectedCategoryId()) {
+				<div class="empty-state">
+					<span class="empty-mark" aria-hidden="true">+</span>
+					<p>No activities found in this category.</p>
+				</div>
+			} @else {
+				<div class="empty-state">
+					<span class="empty-mark" aria-hidden="true">+</span>
+					<p>No habits available.</p>
+				</div>
+			}
+
+			<div class="submit-area">
+				<button type="button" class="submit-button" (click)="submitHabits()" [disabled]="selectedHabits.length === 0">
+					Save my habits
+					<span aria-hidden="true">&rarr;</span>
+				</button>
+				@if (submitted) {
+					<p class="success-message" role="status">Your habit list is ready.</p>
+				}
+			</div>
+		</section>
+	</div>
+</main>

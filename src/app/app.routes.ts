@@ -35,6 +35,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/profile/edit-profile/edit-profile').then((m) => m.EditProfile),
   },
+  {
+    path: 'choose-habit',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/habits/choose-habits/choose-habits').then((m) => m.ChooseHabits),
+  },
 
   {
     path: '**',
