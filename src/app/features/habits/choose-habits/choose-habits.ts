@@ -63,16 +63,10 @@ export class ChooseHabits {
       this.selectedHabits = habits.filter((habit) =>
         savedHabitIds?.includes(habit._id),
       );
-
-      console.log(
-        'Selected Habits after loading user habits:',
-        this.selectedHabits,
-      );
     });
   }
 
   onCategoryChange(): void {
-    // this.selectedHabits = [];
     this.submitted = false;
   }
 
@@ -83,7 +77,6 @@ export class ChooseHabits {
   }
 
   submitHabits(): void {
-    console.log('Selected Habits:', this.selectedHabits, this.userData);
     this.submitted = this.selectedHabits.length > 0;
     this.store.dispatch(
       UserHabitAction.saveUserHabit({
@@ -95,7 +88,6 @@ export class ChooseHabits {
   }
 
   updateHabits(): void {
-    console.log('Selected Habits:', this.selectedHabits);
     this.submitted = this.selectedHabits.length > 0;
     this.store.dispatch(
       UserHabitAction.updateUserHabit({

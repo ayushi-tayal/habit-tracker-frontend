@@ -50,7 +50,6 @@ export class EditProfile {
   }
 
   onSubmit() {
-    console.log(this.editProfileForm.value);
     if(this.editProfileForm.valid){
       this.store.dispatch(ProfileActions.updateProfile({userid: this.userId, profile:this.editProfileForm.getRawValue()}))
     }

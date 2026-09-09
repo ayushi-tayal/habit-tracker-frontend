@@ -39,7 +39,6 @@ export class Register {
   }
 
   onSubmit() {
-    console.log('Form Submitted', this.registerForm);
     if (this.registerForm.invalid) return;
     const { confirmPassword, ...payload } = this.registerForm.getRawValue();
     this.store.dispatch(

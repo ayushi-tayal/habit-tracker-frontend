@@ -37,7 +37,6 @@ export class ForgotPassword {
     }
 
   passwordMatchValidator(formGroup: FormGroup) {
-    console.log('passwordMatchValidator called', this.email);
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
     return password !== confirmPassword ? { passwordMismatch: true } : null;

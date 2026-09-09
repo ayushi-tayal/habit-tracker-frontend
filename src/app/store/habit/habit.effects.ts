@@ -15,11 +15,9 @@ export class HabitEffects {
   load$ = createEffect(() =>
     this.actions$.pipe(
       ofType(HabitActions.loadHabit),
-      tap(() => console.log('loadHabit action dispatched')),
       switchMap(() =>
         this.api.getHabit().pipe(
           map((res: any) => {
-            // console.log('Habit data received:', res);
             return HabitActions.loadHabitSuccess({ habits: res })
           }
           ),
@@ -38,11 +36,9 @@ export class HabitEffects {
   loadCategories$ = createEffect(() =>
     this.actions$.pipe(
       ofType(HabitActions.loadHabitCategories),
-      tap(() => console.log('loadHabitCategories action dispatched')),
       switchMap(() =>
         this.api.getHabitCategories().pipe(
           map((res: any) => {
-            // console.log('Habit categories data received:', res);
             return HabitActions.loadHabitCategoriesSuccess({ categories: res })
           }
           ),

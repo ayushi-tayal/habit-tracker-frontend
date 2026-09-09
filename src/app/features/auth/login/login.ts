@@ -37,7 +37,6 @@ export class Login {
   onSubmit() {
    
     if (this.loginForm.valid) {
-       console.log('Login form submitted:', this.loginForm);
       this.store.dispatch(AuthActions.login(this.loginForm.getRawValue() as {
         email: string;
         password: string;

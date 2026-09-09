@@ -15,11 +15,9 @@ export class UserHabitEffects {
   saveUserHabits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserHabitActions.saveUserHabit),
-      tap((data) => console.log('saveUserHabit action dispatched', data)),
       switchMap(({ userId, habitIds, status }) =>
         this.api.saveUserHabit({ userId, habitIds, status }).pipe(
           map((res: any) => {
-            // console.log('Habit data saved:', res);
             return UserHabitActions.saveUserHabitSuccess({ userHabits: res })
           }
           ),
@@ -38,7 +36,6 @@ export class UserHabitEffects {
   updateUserHabits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserHabitActions.updateUserHabit),
-      tap((data) => console.log('updateUserHabit action dispatched', data)),
       switchMap(({ userId, habitIds, status }) =>
         this.api.updateUserHabit({ userId, habitIds, status }).pipe(
           map((res: any) => {
@@ -60,11 +57,9 @@ export class UserHabitEffects {
   loadUserHabits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserHabitActions.loadUserHabits),
-      tap(() => console.log('loadUserHabits action dispatched')),
       switchMap(({ userId }) =>
         this.api.getUserHabits(userId).pipe(
           map((res: any) => {
-            // console.log('Habit data received:', res);
             return UserHabitActions.loadUserHabitsSuccess({ userHabits: res })
           }
           ),
