@@ -14,8 +14,11 @@ export class HabitApi {
   getHabitCategories() {
     return this.http.get<any>(`${this.baseUrl}/categories`)
   }
-  saveHabit(data: { userId: string, habitIds: string[], status: string }) {
+  saveUserHabit(data: { userId: string, habitIds: string[], status: string }) {
     return this.http.post<any>(`${this.baseUrl}/add_user_habit`, data);
+  }
+  updateUserHabit(data: { userId: string, habitIds: string[], status: string }) {
+    return this.http.patch<any>(`${this.baseUrl}/update_user_habit`, data);
   }
   getUserHabits(userId: string) {
     return this.http.get<any>(`${this.baseUrl}/user_habits/${userId}`);

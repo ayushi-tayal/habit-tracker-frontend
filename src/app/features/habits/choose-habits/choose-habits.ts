@@ -2,7 +2,10 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as HabitActions from '../../../store/habit/habit.actions';
 import * as UserHabitAction from '../../../store/user_habits/user_habits.actions';
-import { selectHabits, selectHabitsCategories } from '../../../store/habit/habit.selectors';
+import {
+  selectHabits,
+  selectHabitsCategories,
+} from '../../../store/habit/habit.selectors';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,13 +25,13 @@ export class ChooseHabits {
   private router = inject(Router);
 
   habits = toSignal(this.store.select(selectHabits), {
-    initialValue: [] as Habits[]
+    initialValue: [] as Habits[],
   });
   categories = toSignal(this.store.select(selectHabitsCategories), {
     initialValue: [],
   });
   userHabits = toSignal(this.store.select(selectUserHabit));
-  userData=toSignal(this.store.select((state) => state.auth.user));
+  userData = toSignal(this.store.select((state) => state.auth.user));
 
   selectedCategoryId = signal('');
   selectedHabits: Habits[] = [];
@@ -46,23 +49,30 @@ export class ChooseHabits {
   constructor() {
     this.store.dispatch(HabitActions.loadHabit());
     this.store.dispatch(HabitActions.loadHabitCategories());
-    this.store.dispatch(UserHabitAction.loadUserHabits({ userId: this.userData()?._id || '' }));
+    this.store.dispatch(
+      UserHabitAction.loadUserHabits({ userId: this.userData()?._id || '' }),
+    );
 
-    effect(()=>{
+    effect(() => {
       const userHabits = this.userHabits() ?? [];
       const habits = this.habits() ?? [];
       if (!userHabits.length || !habits.length) {
         return;
       }
       const savedHabitIds = userHabits[0]?.habitIds;
-      this.selectedHabits = habits.filter((habit) => savedHabitIds?.includes(habit._id));
+      this.selectedHabits = habits.filter((habit) =>
+        savedHabitIds?.includes(habit._id),
+      );
 
-      console.log('Selected Habits after loading user habits:', this.selectedHabits);
-    })
+      console.log(
+        'Selected Habits after loading user habits:',
+        this.selectedHabits,
+      );
+    });
   }
 
   onCategoryChange(): void {
-    this.selectedHabits = [];
+    // this.selectedHabits = [];
     this.submitted = false;
   }
 
@@ -73,19 +83,34 @@ export class ChooseHabits {
   }
 
   submitHabits(): void {
-    console.log('Selected Habits:', this.selectedHabits,this.userData);
+    console.log('Selected Habits:', this.selectedHabits, this.userData);
     this.submitted = this.selectedHabits.length > 0;
     this.store.dispatch(
       UserHabitAction.saveUserHabit({
         userId: this.userData()?._id || '',
         habitIds: this.selectedHabits.map((habit) => habit._id),
-        status: 'active'
+        status: 'active',
       }),
     );
+  }
+
+  updateHabits(): void {
+    console.log('Selected Habits:', this.selectedHabits);
+    this.submitted = this.selectedHabits.length > 0;
+    this.store.dispatch(
+      UserHabitAction.updateUserHabit({
+        userId: this.userData()?._id || '',
+        habitIds: this.selectedHabits.map((habit) => habit._id),
+        status: 'active',
+      }),
+    );
+  }
+
+  isHabitSelected(habit: Habits): boolean {
+    return this.selectedHabits.some((selected) => selected._id === habit._id);
   }
 
   goBack(): void {
     this.router.navigate(['/dashboard']);
   }
 }
-

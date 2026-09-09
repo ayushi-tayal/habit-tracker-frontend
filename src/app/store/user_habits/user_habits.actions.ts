@@ -14,6 +14,21 @@ export const saveUserHabitFailure = createAction(
   '[UserHabitModels] Save Failure',
   props<{ error: string }>(),
 );
+
+export const updateUserHabit = createAction('[UserHabitModels] Update',
+    props<{ userId: string, habitIds:string[], status: string }>()
+);
+
+export const updateUserHabitSuccess = createAction(
+  '[UserHabitModels] Update Success',
+  props<{ userHabits: UserHabit[] }>(),
+);
+
+export const updateUserHabitFailure = createAction(
+  '[UserHabitModels] Update Failure',
+  props<{ error: string }>(),
+);
+
 export const loadUserHabits = createAction('[UserHabitModels] Load',
     props<{ userId: string }>()
 );

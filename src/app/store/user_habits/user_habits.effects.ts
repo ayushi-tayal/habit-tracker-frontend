@@ -12,12 +12,12 @@ export class UserHabitEffects {
   private actions$ = inject(Actions);
   private api = inject(HabitApi);
 
-  saveHabits$ = createEffect(() =>
+  saveUserHabits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserHabitActions.saveUserHabit),
       tap((data) => console.log('saveUserHabit action dispatched', data)),
       switchMap(({ userId, habitIds, status }) =>
-        this.api.saveHabit({ userId, habitIds, status }).pipe(
+        this.api.saveUserHabit({ userId, habitIds, status }).pipe(
           map((res: any) => {
             // console.log('Habit data saved:', res);
             return UserHabitActions.saveUserHabitSuccess({ userHabits: res })
@@ -26,6 +26,28 @@ export class UserHabitEffects {
           catchError((err) =>
             of(
               UserHabitActions.saveUserHabitFailure({
+                error: err?.error?.message ?? 'Failed to save habit',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+  
+  updateUserHabits$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserHabitActions.updateUserHabit),
+      tap((data) => console.log('updateUserHabit action dispatched', data)),
+      switchMap(({ userId, habitIds, status }) =>
+        this.api.updateUserHabit({ userId, habitIds, status }).pipe(
+          map((res: any) => {
+            return UserHabitActions.updateUserHabitSuccess({ userHabits: res })
+          }
+          ),
+          catchError((err) =>
+            of(
+              UserHabitActions.updateUserHabitFailure({
                 error: err?.error?.message ?? 'Failed to save habit',
               })
             )
