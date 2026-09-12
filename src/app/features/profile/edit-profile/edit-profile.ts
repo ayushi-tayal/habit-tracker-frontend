@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { selectProfile } from '../../../store/profile/profile.selectors';
 import { Store } from '@ngrx/store';
-import { ActivatedRoute } from '@angular/router';
 import * as ProfileActions from '../../../store/profile/profile.actions'
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.scss',
 })
@@ -15,6 +15,7 @@ export class EditProfile {
   userId: string='';
   editProfileForm: FormGroup;
   private store= inject(Store);
+  private router = inject(Router);
   profile$ = this.store.select(selectProfile);
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute) {
@@ -47,6 +48,10 @@ export class EditProfile {
         if(!profile) this.store.dispatch(ProfileActions.loadProfile());
         this.editProfileForm.patchValue({...profile})
       });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/dashboard']);
   }
 
   onSubmit() {

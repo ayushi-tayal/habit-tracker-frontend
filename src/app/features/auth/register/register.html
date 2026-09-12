@@ -1,44 +1,47 @@
-<div class="container mt-5" style="max-width: 420px;">
-    <h2 class="mb-4">Sign up</h2>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label for="username">Username:</label>
+<main class="auth-page">
+  <section class="auth-panel">
+    <p class="auth-kicker">Start small</p>
+    <h1>Sign up</h1>
+    <p class="auth-intro">Create a calm place to keep track of the habits you are building.</p>
+    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+            <label for="username">Name</label>
             <input id="username" formControlName="username" />
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input id="email" formControlName="email" />
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" />
         </div>
-        <div>
-            <label for="password">Password:</label>
+        <div class="form-field">
+            <label for="password">Password</label>
             <input id="password" type="password" formControlName="password" />
         </div>
-        <div>
-            <label for="confirmPassword">Confirm Password:</label>
+        <div class="form-field">
+            <label for="confirmPassword">Confirm password</label>
             <input id="confirmPassword" type="password" formControlName="confirmPassword" />
         </div>
-        <div>
-            <label for="phone">Phone:</label>
+        <div class="form-field">
+            <label for="phone">Phone</label>
             <input id="phone" formControlName="phone" />
         </div>
-        <button type="submit">Register</button>
+        <button class="auth-submit" type="submit">Create account <span aria-hidden="true">&rarr;</span></button>
     </form>
 
-    <p class="mt-3">
-        Already have an account?
-        <a routerLink="/login">Login</a>
-    </p>
+    <div class="auth-links">
+        <p>Already have an account? <a routerLink="/login">Log in</a></p>
+    </div>
 
     @if(loading$ | async) {
-        <div class="alert alert-info">
+        <div class="auth-alert auth-loading">
             Loading...
         </div>
     }
     @if(error$ | async; as error) {
-        <div class="alert alert-danger">
+        <div class="auth-alert auth-error">
             {{ error }}
         </div>
     }
 
 
-</div>
+    </section>
+</main>

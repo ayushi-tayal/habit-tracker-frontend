@@ -12,5 +12,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
-
+  constructor() {}
 }

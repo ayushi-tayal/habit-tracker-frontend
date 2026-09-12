@@ -1,64 +1,70 @@
-<div class="container mt-5" style="max-width: 420px;">
-    <h2 class="mb-4">Edit Profile</h2>
-    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label for="username">Name:</label>
-            <input id="username" formControlName="username" />
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input id="email" formControlName="email" />
-        </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input id="phone" formControlName="phone" />
-        </div>
-        <div formGroupName="personal_info">
-            <div>
-                <label for="profession">Profession:</label>
-                <input id="profession" formControlName="profession" />
-            </div>
-            <div>
-                <label for="marital_status">Marital Status:</label>
-                <input id="marital_status" formControlName="marital_status" />
-            </div>
-            <div formGroupName="address">
-                <div>
-                    <label for="street">Street:</label>
-                    <input id="street" formControlName="street" />
-                </div>
-                <div>
-                    <label for="city">City:</label>
-                    <input id="city" formControlName="city" />
-                </div>
-                <div>
-                    <label for="state">State:</label>
-                    <input id="state" formControlName="state" />
-                </div>
-                <div>
-                    <label for="pincode">Pincode:</label>
-                    <input id="pincode" formControlName="pincode" />
-                </div>
-                <div>
-                    <label for="country">Country:</label>
-                    <input id="country" formControlName="country" />
+<main class="edit-profile-page">
+    <section class="edit-profile-panel">
+        <button type="button" class="profile-back" (click)="goBack()">&larr; Back to dashboard</button>
+        <p class="form-kicker">Your details</p>
+        <h1>Edit profile</h1>
+        <p class="profile-intro">Keep your personal details up to date.</p>
+
+        <form class="profile-form" [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+            <div class="profile-section">
+                <h2>Basic information</h2>
+                <div class="profile-fields profile-fields-two">
+                    <div class="form-field">
+                        <label for="username">Name</label>
+                        <input id="username" formControlName="username" />
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" formControlName="email" />
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" formControlName="phone" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <button type="submit">Submit</button>
-    </form>
+            <div class="profile-section" formGroupName="personal_info">
+                <h2>Personal information</h2>
+                <div class="profile-fields profile-fields-two">
+                    <div class="form-field">
+                        <label for="profession">Profession</label>
+                        <input id="profession" formControlName="profession" />
+                    </div>
+                    <div class="form-field">
+                        <label for="marital_status">Marital status</label>
+                        <input id="marital_status" formControlName="marital_status" />
+                    </div>
+                </div>
 
-    <!-- @if(loading$ | async) {
-        <div class="alert alert-info">
-            Loading...
-        </div>
-    }
-    @if(error$ | async; as error) {
-        <div class="alert alert-danger">
-            {{ error }}
-        </div>
-    } -->
+                <div class="address-fields" formGroupName="address">
+                    <h3>Address</h3>
+                    <div class="profile-fields profile-fields-two">
+                        <div class="form-field address-wide">
+                            <label for="street">Street</label>
+                            <input id="street" formControlName="street" />
+                        </div>
+                        <div class="form-field">
+                            <label for="city">City</label>
+                            <input id="city" formControlName="city" />
+                        </div>
+                        <div class="form-field">
+                            <label for="state">State</label>
+                            <input id="state" formControlName="state" />
+                        </div>
+                        <div class="form-field">
+                            <label for="pincode">Pincode</label>
+                            <input id="pincode" formControlName="pincode" />
+                        </div>
+                        <div class="form-field">
+                            <label for="country">Country</label>
+                            <input id="country" formControlName="country" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
-</div>
+            <button class="profile-submit" type="submit">Save changes <span aria-hidden="true">&rarr;</span></button>
+        </form>
+    </section>
+</main>

@@ -1,30 +1,29 @@
-<div class="card p-3">
-    <h5>Today's Habits</h5>
-
-    <div class="mt-3">
-        <div class="d-flex justify-content-between mb-2">
-            <span>Drink Water</span>
-            <input type="checkbox" />
+<section class="habit-panel today-panel">
+    <div class="panel-heading">
+        <div>
+            <p class="section-kicker">Today</p>
+            <h2>Today's habits</h2>
         </div>
-
-        <div class="d-flex justify-content-between mb-2">
-            <span>Workout</span>
-            <input type="checkbox" />
-        </div>
-
-        <div class="d-flex justify-content-between mb-2">
-            <span>Meditation</span>
-            <input type="checkbox" />
-        </div>
-
-        <div class="d-flex justify-content-between mb-2">
-            <span>Reading</span>
-            <input type="checkbox" />
-        </div>
+        <span class="date-label">Your focus</span>
     </div>
-    <div class="mt-3 text-end">
-        <!-- <div class="mb-2 align-center"> -->
-            <button type="submit" class="btn btn-primary">Submit</button>
-        <!-- </div> -->
+
+    <div class="habit-list">
+        @for (habit of selectedHabits; track habit._id) {
+        <label class="habit-item">
+            <span>{{ habit.name }}</span>
+            <input type="checkbox" [checked]="isHabitSelected(habit)"
+                (change)="toggleHabit(habit, $any($event.target).checked)" /><span class="habit-check"></span>
+        </label>
+        }
     </div>
-</div>
+    <div class="panel-footer">
+        @if(habitLog){
+            <button type="submit" class="panel-button" (click)="update()">Update today's progress <span
+                    aria-hidden="true">&rarr;</span></button>
+        } @else {
+            <button type="submit" class="panel-button" (click)="submit()">Save today's progress <span
+                    aria-hidden="true">&rarr;</span></button>
+        }
+
+    </div>
+</section>

@@ -1,16 +1,9 @@
-<nav class="navbar navbar-light bg-light px-3">
-    <div class="d-flex align-items-center gap-3">
-        <strong>Habit Tracker</strong>
-    </div>
-    <div class="d-flex align-items-center gap-3" routerLink="/choose-habit">
-        <strong>Choose your Habits</strong>
-    </div>
-    <div class="d-flex align-items-center gap-3">
-        <img
-            src="https://i.pravatar.cc/40"
-            class="rounded-circle"
-            style="cursor: pointer"
-            routerLink="/profile" 
-        />
+<nav class="site-nav">
+    <a class="brand" routerLink="/dashboard">Habit<span>Tracker</span></a>
+    <div class="nav-actions">
+        <a class="choose-link" routerLink="/choose-habit">Choose your habits </a>
+        <a routerLink="/profile" aria-label="Open profile">
+            <img src="https://i.pravatar.cc/40" alt="Profile" class="profile-avatar" />
+        </a>
     </div>
 </nav>

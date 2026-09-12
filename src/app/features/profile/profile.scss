@@ -1,0 +1,88 @@
+.profile-panel {
+	height: 100%;
+	padding: clamp(1.25rem, 3vw, 2rem);
+	border: 1px solid var(--habit-line);
+	border-radius: 8px;
+	background: var(--habit-paper);
+	box-shadow: 0 18px 45px rgba(52, 78, 62, 0.07);
+}
+
+.panel-heading {
+	margin-bottom: 1.5rem;
+}
+
+.section-kicker {
+	margin: 0 0 0.3rem;
+	color: var(--habit-green-bright);
+	font-size: 0.7rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+h2 {
+	margin: 0;
+	color: #294538;
+	font-size: 1.45rem;
+}
+
+.muted-message,
+.error-message {
+	color: var(--habit-muted);
+	font-size: 0.85rem;
+}
+
+.error-message {
+	padding: 0.7rem;
+	border-radius: 4px;
+	background: #fff0ed;
+	color: #a14d3c;
+}
+
+.profile-details {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1.75rem;
+}
+
+.profile-image {
+	width: 4.5rem;
+	height: 4.5rem;
+	border: 3px solid #d8e8da;
+	border-radius: 50%;
+}
+
+.profile-copy {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.profile-copy strong {
+	color: var(--habit-deep);
+	font-size: 1rem;
+}
+
+.profile-copy span {
+	overflow: hidden;
+	color: var(--habit-muted);
+	font-size: 0.78rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.profile-button {
+	width: 100%;
+	padding: 0.7rem;
+	border: 1px solid #b9d0bd;
+	border-radius: 5px;
+	background: transparent;
+	color: var(--habit-green);
+	font-weight: 700;
+}
+
+.profile-button span {
+	margin-left: 0.4rem;
+}

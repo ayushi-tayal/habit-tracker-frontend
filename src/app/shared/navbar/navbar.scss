@@ -1,0 +1,63 @@
+.site-nav {
+	display: flex;
+	min-height: 4.5rem;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 5vw;
+	border-bottom: 1px solid var(--habit-line);
+	background: var(--habit-paper);
+}
+
+.brand,
+.choose-link {
+	color: var(--habit-deep);
+	text-decoration: none;
+}
+
+.brand {
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+.brand span {
+	color: var(--habit-green-bright);
+}
+
+.nav-actions {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.choose-link {
+	color: var(--habit-green);
+	font-size: 0.85rem;
+	font-weight: 700;
+}
+
+.choose-link span {
+	margin-left: 0.3rem;
+	font-size: 1.1rem;
+}
+
+.profile-avatar {
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 2px solid #d5e5d8;
+	border-radius: 50%;
+}
+
+@media (max-width: 520px) {
+	.site-nav {
+		padding: 0 1rem;
+	}
+
+	.choose-link {
+		font-size: 0;
+	}
+
+	.choose-link span {
+		font-size: 1.2rem;
+	}
+}

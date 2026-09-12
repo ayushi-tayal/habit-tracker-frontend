@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { UserHabitModels, UserHabit} from './user_habits.models';
+import { UserHabit} from './user_habits.models';
 
 export const saveUserHabit = createAction('[UserHabitModels] Save',
     props<{ userId: string, habitIds:string[], status: string }>()

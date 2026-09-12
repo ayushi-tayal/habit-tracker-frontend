@@ -21,7 +21,9 @@ export class AuthEffects {
       ofType(AuthActions.login),
       switchMap(({ email, password }) =>
         this.api.login({ email, password }).pipe(
-          tap((res: any) => this.tokenStorage.setToken(res.token)),
+          tap((res: any) => {
+            console.log('Login response:', res);
+            return this.tokenStorage.setToken(res.token)}),
           map((res: any) =>
             AuthActions.loginSuccess({ user: res.user, token: res.token }),
           ),

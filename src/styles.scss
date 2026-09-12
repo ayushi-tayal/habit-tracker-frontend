@@ -1,1 +1,153 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--habit-ink: #26332d;
+	--habit-deep: #193b2d;
+	--habit-green: #236d50;
+	--habit-green-bright: #2c8a68;
+	--habit-muted: #708077;
+	--habit-line: #dce5dc;
+	--habit-paper: #ffffff;
+	--habit-background: #f5f7f2;
+}
+
+body {
+	margin: 0;
+	background: var(--habit-background);
+	color: var(--habit-ink);
+	font-family: Georgia, 'Times New Roman', serif;
+}
+
+button,
+select,
+input {
+	font-family: inherit;
+}
+
+.auth-page {
+	display: grid;
+	min-height: 100vh;
+	padding: 2rem 1.25rem;
+	place-items: center;
+	background: var(--habit-background);
+}
+
+.auth-panel {
+	width: min(100%, 470px);
+	padding: clamp(1.5rem, 5vw, 2.75rem);
+	border: 1px solid var(--habit-line);
+	border-radius: 8px;
+	background: var(--habit-paper);
+	box-shadow: 0 18px 45px rgba(52, 78, 62, 0.08);
+}
+
+.auth-kicker,
+.form-kicker {
+	margin: 0 0 0.6rem;
+	color: var(--habit-green-bright);
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.auth-panel h1,
+.edit-profile-panel h1 {
+	margin: 0 0 0.7rem;
+	color: var(--habit-deep);
+	font-size: clamp(2.2rem, 6vw, 3.4rem);
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+.auth-intro {
+	margin-bottom: 1.8rem;
+	color: var(--habit-muted);
+	font-size: 0.95rem;
+}
+
+.auth-form,
+.profile-form {
+	display: grid;
+	gap: 1rem;
+}
+
+.form-field label {
+	display: block;
+	margin-bottom: 0.45rem;
+	color: #496054;
+	font-size: 0.82rem;
+	font-weight: 700;
+}
+
+.form-field input {
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.7rem 0.85rem;
+	border: 1px solid #d5e0d6;
+	border-radius: 5px;
+	background: #fff;
+	color: var(--habit-ink);
+	outline: none;
+}
+
+.form-field input:focus {
+	border-color: #5bb08b;
+	box-shadow: 0 0 0 0.2rem rgba(44, 138, 104, 0.14);
+}
+
+.auth-submit,
+.profile-submit {
+	min-height: 3.1rem;
+	margin-top: 0.5rem;
+	border: 0;
+	border-radius: 5px;
+	background: var(--habit-green);
+	color: #fff;
+	font-weight: 700;
+}
+
+.auth-submit:hover,
+.profile-submit:hover {
+	background: #19573f;
+}
+
+.auth-links {
+	display: grid;
+	gap: 0.45rem;
+	margin-top: 1.5rem;
+	color: var(--habit-muted);
+	font-size: 0.85rem;
+}
+
+.auth-links p {
+	margin: 0;
+}
+
+.auth-links a,
+.auth-back {
+	color: var(--habit-green);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.auth-alert {
+	margin-top: 1rem;
+	padding: 0.75rem;
+	border-radius: 4px;
+	font-size: 0.85rem;
+}
+
+.auth-loading {
+	background: #eef7f0;
+	color: var(--habit-green);
+}
+
+.auth-error {
+	background: #fff0ed;
+	color: #a14d3c;
+}
+
+.auth-back {
+	display: inline-block;
+	margin-top: 1.5rem;
+	font-size: 0.85rem;
+}

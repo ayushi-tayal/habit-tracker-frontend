@@ -8,7 +8,7 @@ export interface AuthState {
 }
 
 export interface AppUser {
-        id: string;
+        _id: string;
         username: string;
         email?: string;
         phone?: string

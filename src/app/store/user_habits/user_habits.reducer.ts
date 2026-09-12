@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserHabitModels, UserHabit } from './user_habits.models';
+import { UserHabitModels } from './user_habits.models';
 import * as UserHabitAction from './user_habits.actions';
 
 export const USER_HABIT_FEATURE_KEY = 'userHabits';

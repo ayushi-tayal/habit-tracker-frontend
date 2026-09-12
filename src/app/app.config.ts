@@ -20,6 +20,8 @@ import { HabitEffects } from './store/habit/habit.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { UserHabitReducer } from './store/user_habits/user_habits.reducer';
 import { UserHabitEffects } from './store/user_habits/user_habits.effects';
+import { UserHabitLogReducer } from './store/user_habits_logs/user_habits_logs.reducer';
+import { UserHabitLogEffects } from './store/user_habits_logs/user_habits_logs.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -36,13 +38,14 @@ export const appConfig: ApplicationConfig = {
       auth: authReducer,
       profile: profileReducer,
       habit: HabitReducer,
-      userHabits: UserHabitReducer
+      userHabits: UserHabitReducer,
+      userHabitLogs: UserHabitLogReducer,
     }),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Set to true for production
     }),
-    provideEffects([AuthEffects, ProfileEffects, HabitEffects, UserHabitEffects]),
+    provideEffects([AuthEffects, ProfileEffects, HabitEffects, UserHabitEffects, UserHabitLogEffects]),
   ],
 };
 
