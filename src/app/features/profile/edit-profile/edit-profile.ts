@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { selectProfile } from '../../../store/profile/profile.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
+import { selectProfile, selectProfileLoading } from '../../../store/profile/profile.selectors';
 import { Store } from '@ngrx/store';
 import * as ProfileActions from '../../../store/profile/profile.actions'
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.scss',
 })
@@ -17,6 +18,7 @@ export class EditProfile {
   private store= inject(Store);
   private router = inject(Router);
   profile$ = this.store.select(selectProfile);
+  loading$ = this.store.select(selectProfileLoading);
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {

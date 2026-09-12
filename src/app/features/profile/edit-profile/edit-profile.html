@@ -1,9 +1,16 @@
 <main class="edit-profile-page">
     <section class="edit-profile-panel">
-        <button type="button" class="profile-back" (click)="goBack()">&larr; Back to dashboard</button>
+        <button type="button" class="back-button" (click)="goBack()">
+            <span aria-hidden="true">&larr;</span>
+            Back to dashboard
+        </button>
         <p class="form-kicker">Your details</p>
         <h1>Edit profile</h1>
         <p class="profile-intro">Keep your personal details up to date.</p>
+
+        @if (loading$ | async) {
+            <div class="auth-alert auth-loading">Saving profile...</div>
+        }
 
         <form class="profile-form" [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
             <div class="profile-section">

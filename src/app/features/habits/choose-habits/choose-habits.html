@@ -1,5 +1,9 @@
 <main class="choose-habits-page">
     <div class="choose-habits-shell">
+        @if (loading$ | async) {
+        <div class="auth-alert auth-loading">Saving habits...</div>
+        }
+
         <button type="button" class="back-button" (click)="goBack()">
             <span aria-hidden="true">&larr;</span>
             Back to dashboard

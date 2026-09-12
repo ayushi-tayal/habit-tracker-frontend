@@ -11,7 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Habits } from '../../../store/habit/habit.models';
-import { selectUserHabit } from '../../../store/user_habits/user_habits.selectors';
+import {
+  selectUserHabit,
+  selectUserHabitLoading,
+} from '../../../store/user_habits/user_habits.selectors';
 
 @Component({
   selector: 'app-choose-habits',
@@ -32,6 +35,7 @@ export class ChooseHabits {
   });
   userHabits = toSignal(this.store.select(selectUserHabit));
   userData = toSignal(this.store.select((state) => state.auth.user));
+  loading$ = this.store.select(selectUserHabitLoading);
 
   selectedCategoryId = signal('');
   selectedHabits: Habits[] = [];

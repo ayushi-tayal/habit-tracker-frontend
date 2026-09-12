@@ -146,6 +146,58 @@ input {
 	color: #a14d3c;
 }
 
+.global-loader {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 0.9rem;
+	padding: 1rem;
+	background: rgba(25, 59, 45, 0.1);
+	pointer-events: all;
+	text-align: center;
+}
+
+.global-loader::before {
+	position: absolute;
+	width: 5.5rem;
+	height: 5.5rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.94);
+	box-shadow: 0 12px 30px rgba(25, 59, 45, 0.16);
+	content: '';
+}
+
+.global-loader > * {
+	position: relative;
+}
+
+.global-loader {
+	color: var(--habit-green);
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+
+.global-loader-spinner {
+	display: block;
+	width: 1.8rem;
+	height: 1.8rem;
+	margin: 0;
+	border: 3px solid #b8d5c2;
+	border-top-color: var(--habit-green);
+	border-radius: 50%;
+	animation: habit-loader-spin 700ms linear infinite;
+}
+
+@keyframes habit-loader-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 .auth-back {
 	display: inline-block;
 	margin-top: 1.5rem;

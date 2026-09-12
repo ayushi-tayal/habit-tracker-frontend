@@ -14,13 +14,27 @@
 	box-shadow: 0 18px 45px rgba(52, 78, 62, 0.08);
 }
 
-.profile-back {
-	display: inline-block;
+
+.back-button {
+	display: inline-flex;
+	gap: 0.6rem;
+	align-items: center;
+	padding: 0;
+	border: 0;
+	background: transparent;
 	margin-bottom: 3.5rem;
-	color: var(--habit-green);
-	font-size: 0.85rem;
-	font-weight: 700;
-	text-decoration: none;
+	color: #5a7162;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.back-button:hover {
+	color: #1d6b50;
+}
+
+.back-button span {
+	font-size: 1.3rem;
+	line-height: 0.8;
 }
 
 .form-kicker {

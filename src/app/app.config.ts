@@ -22,6 +22,7 @@ import { UserHabitReducer } from './store/user_habits/user_habits.reducer';
 import { UserHabitEffects } from './store/user_habits/user_habits.effects';
 import { UserHabitLogReducer } from './store/user_habits_logs/user_habits_logs.reducer';
 import { UserHabitLogEffects } from './store/user_habits_logs/user_habits_logs.effects';
+import { loadingInterceptor } from './core/interceptor/loading-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
+        loadingInterceptor,
         authInterceptor, 
         errorInterceptor
       ])

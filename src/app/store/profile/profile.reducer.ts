@@ -36,6 +36,7 @@ export const profileReducer = createReducer(
         ...state,
         profile,
         userid,
-        loading: false
+        loading: true,
+        error: null
     }))
 )
