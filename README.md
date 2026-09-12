@@ -1,56 +1,75 @@
-# HabitTrackerClean
+# Habit Tracker- Frontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
 
-## Development server
+A modern habit tracking application built with Angular and NgRx.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- User registration and login
+- JWT authentication
+- Protected routes
+- Persistent authentication session
+- User profile management
+- Habit categories
+- Core habit selection
+- Daily habit tracking
+- Daily progress updates
+- 30-day consistency calendar
+- Loading states and responsive UI
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech Stack
 
-## Code scaffolding
+- Angular
+- TypeScript
+- NgRx
+- Angular Router
+- Angular HTTP Interceptors
+- Standalone Components
+- SCSS
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Architecture
 
-```bash
-ng generate component component-name
-```
+Component
+↓
+NgRx Actions
+↓
+Effects
+↓
+REST API
+↓
+Backend
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+API Response
+↓
+Effects
+↓
+Success Actions
+↓
+Reducers
+↓
+Selectors
+↓
+Components
 
-```bash
-ng generate --help
-```
+## Backend
 
-## Building
+This frontend communicates with the Node.js/Express backend.
 
-To build the project run:
+Backend repository:
+[habit-tracker-backend](https://github.com/ayushi-tayal/habit-tracker-backend)
 
-```bash
-ng build
-```
+## Screenshots
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+<!-- Add screenshots here -->
 
-## Running unit tests
+## Getting Started
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+<!-- Setup instructions -->
 
-```bash
-ng test
-```
+## Environment Variables
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
+<!-- Frontend environment configuration -->
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
